@@ -48,6 +48,16 @@ jobs:
           cd build
           make check -j4
 
+      - name: make dist check
+        shell: bash
+        run: |
+          cd build
+          make dist
+          tar -xzvf casm-global-2.0.0-alpha.tar.gz
+          cd casm-global-2.0.0-alpha
+          ./configure CC='ccache gcc' CXX='ccache g++' CXXFLAGS='-O3 -Wall -DNDEBUG'
+          make check
+
       - name: make distcheck
         shell: bash
         run: |
