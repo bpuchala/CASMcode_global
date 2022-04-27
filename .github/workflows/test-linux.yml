@@ -52,4 +52,5 @@ jobs:
         shell: bash
         run: |
           cd build
+          export DISTCHECK_CONFIGURE_FLAGS=" CC='ccache gcc' CXX='ccache g++' CXXFLAGS='-O3 -Wall -DNDEBUG' "
           make distcheck -j4
