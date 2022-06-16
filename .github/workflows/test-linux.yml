@@ -48,6 +48,13 @@ jobs:
           cd build
           make check -j4
 
+      - name: upload test log
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-log
+          path: build/test-suite.log
+
       - name: make distcheck
         shell: bash
         run: |
